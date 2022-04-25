@@ -6,7 +6,6 @@ class User
 {
     public static function create(array $fields): User
     {
-        // TODO need create validator class
         return new self(
             $fields['id'],
             $fields['username'],

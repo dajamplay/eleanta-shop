@@ -8,16 +8,17 @@ use App\Router\Request;
 
 class MainController
 {
-    public function __construct() {
-
-    }
-
     public function indexAction(Request $request) : void
     {
         $userRepository = new UserRepository();
-        $mapper = new UserMapper($userRepository);
-        $user = $mapper->findById(1);
-        var_dump($user->getUsername());
-        var_dump($request->get());
+        $userMapper = new UserMapper($userRepository);
+
+        if ($id = $request->get('id')) {
+            if ($user = $userMapper->findById($id)) {
+                echo $user->getUsername();
+            } else {
+                echo 'Такого пользователя нет';
+            }
+        }
     }
 }

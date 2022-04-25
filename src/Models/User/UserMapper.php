@@ -6,19 +6,21 @@ class UserMapper implements IUserRepository
 {
     public function __construct(private IUserRepository $userRepository) {}
 
-    public function findById(int $id): User
+    public function findById(string $id): User | false
     {
-        $user = $this->userRepository->findById($id);
-        return $this->mapRowToUser($user);
+        if ($user = $this->userRepository->findById($id)) {
+            return $this->mapRowToUser($user);
+        }
+        return false;
     }
 
-    public function findByUserName(string $username): User
+    public function findByUserName(string $username): User | false
     {
         $user = $this->userRepository->findByUserName($username);
         return $this->mapRowToUser($user);
     }
 
-    public function findAll(): array
+    public function findAll(): array | false
     {
         $users = $this->userRepository->findAll();
         return $this->mapRowsToUsers($users);

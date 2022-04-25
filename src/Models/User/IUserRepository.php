@@ -4,7 +4,7 @@ namespace App\Models\User;
 
 interface IUserRepository
 {
-    public function findById(int $id) : array | User;
-    public function findByUserName(string $username) : array | User;
-    public function findAll() : array;
+    public function findById(string $id) : array | User | false;
+    public function findByUserName(string $username) : array | User | false;
+    public function findAll() : array | false;
 }
