@@ -26,13 +26,14 @@ class Router
         $requestPath = $requestUri['path'];
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-        $controller = null;
-        $action = null;
+        $controller = DIR_CONTROLLERS . 'MainController';
+        $action = 'notFoundPageAction';
 
         foreach ($this->handlers as $handler) {
             if ($handler['path'] == $requestPath && $handler['method'] == $requestMethod) {
-                $controller = 'App\\Controllers\\' .$handler['controller'];
+                $controller = DIR_CONTROLLERS .$handler['controller'];
                 $action = $handler['action'];
+                break;
             }
         }
         call_user_func([new $controller,$action], new Request());

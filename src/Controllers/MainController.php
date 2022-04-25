@@ -12,12 +12,14 @@ class MainController
     {
         $userRepository = new UserRepository(new UserMapper());
 
-        if ($id = $request->get('id')) {
-            if ($user = $userRepository->findById($id)) {
-                echo $user->getUsername();
-            } else {
-                echo 'Такого пользователя нет';
-            }
+        if ($user = $userRepository->findById($request->get('id'))) {
+            echo $user->getUsername();
+        } else {
+            echo 'Такого пользователя нет';
         }
+    }
+
+    public function notFoundPageAction() {
+        header("HTTP/1.1 404 Not Found");
     }
 }
