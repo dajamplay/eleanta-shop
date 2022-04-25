@@ -38,6 +38,6 @@ class User
 
     public function getId(): int
     {
-        return $this->password;
+        return $this->id;
     }
 }
