@@ -1,0 +1,18 @@
+{
+    "name": "aksenov_ma_39-02z/diplom",
+    "description": "VKR",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dajamplay",
+            "email": "ggyoug@gmail.com"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*"
+    }
+}
