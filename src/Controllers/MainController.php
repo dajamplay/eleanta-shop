@@ -10,15 +10,15 @@ class MainController
 {
     public function indexAction(Request $request) : void
     {
-        $userRepository = new UserRepository(new UserMapper());
+        $userRepo = new UserRepository(new UserMapper());
+        $user = $userRepo->findById($request->get('id'));
 
-        if ($user = $userRepository->findById($request->get('id'))) {
-            echo $user->getUsername();
-        } else {
-            echo 'Такого пользователя нет';
-        }
+
     }
 
+    /**
+     * View for not found pages
+     */
     public function notFoundPageAction() {
         header("HTTP/1.1 404 Not Found");
     }

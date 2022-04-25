@@ -6,8 +6,14 @@ use PDO;
 
 class DB
 {
+    /**
+     * @var PDO $instance instance
+     */
     protected static PDO $instance;
 
+    /**
+     * @return PDO or create PDO instance
+     */
     public static function instance(): PDO
     {
         if (empty(self::$instance))

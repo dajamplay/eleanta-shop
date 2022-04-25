@@ -35,8 +35,7 @@ class UserRepository implements IUserRepository
     {
         $stmt = $this->pdo->prepare('SELECT * FROM `users` WHERE `id` = ?');
         $stmt->execute([$id]);
-        if ($user = $stmt->fetch()) return $this->userMapper->mapRowToUser($user);
-        return false;
+        return ($user = $stmt->fetch()) ? $this->userMapper->mapRowToUser($user) : false;
     }
 
     /**
