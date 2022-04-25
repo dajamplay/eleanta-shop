@@ -6,8 +6,7 @@ class User
 {
     public static function create(array $fields): User
     {
-        // validate state before accessing keys!
-
+        // TODO need create validator class
         return new self(
             $fields['id'],
             $fields['username'],

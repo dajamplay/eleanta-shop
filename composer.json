@@ -3,7 +3,7 @@
     "description": "shop",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "src/"
         }
     },
     "authors": [

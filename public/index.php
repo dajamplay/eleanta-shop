@@ -1,12 +1,12 @@
-<?php require_once '../vendor/autoload.php';
+<?php
 
-const DB_HOST = 'localhost';
-const DB_NAME = 'eleanta_db';
-const DB_USER = 'root';
-const DB_PASS = '';
-const DB_CHAR = 'utf8';
+use App\Router\Router;
 
-use App\App;
+require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../config.php';
 
-$app = new App();
-$app->init();
+$router = new Router();
+
+$router->get('/', 'MainController', 'indexAction');
+
+$router->run();
