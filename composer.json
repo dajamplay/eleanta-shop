@@ -1,6 +1,6 @@
 {
-    "name": "aksenov_ma_39-02z/diplom",
-    "description": "VKR",
+    "name": "eleanta/shop",
+    "description": "shop",
     "autoload": {
         "psr-4": {
             "App\\": "app/"
