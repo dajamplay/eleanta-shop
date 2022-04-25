@@ -13,10 +13,10 @@ class User
     #[Pure] public static function create(array $fields): User
     {
         return new self(
-            $fields['id'],
-            $fields['username'],
-            $fields['password'],
-            $fields['email']
+            id: $fields['id'],
+            username: $fields['username'],
+            password: $fields['password'],
+            email: $fields['email']
         );
     }
 

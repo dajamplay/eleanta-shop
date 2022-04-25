@@ -33,9 +33,9 @@ class UserRepository implements IUserRepository
      */
     public function findById(string $id): User | false
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM `users` WHERE `id` = ?');
-        $stmt->execute([$id]);
-        return ($user = $stmt->fetch()) ? $this->userMapper->mapRowToUser($user) : false;
+        $stmt = $this->pdo->prepare(query: 'SELECT * FROM `users` WHERE `id` = ?');
+        $stmt->execute(params: [$id]);
+        return ($user = $stmt->fetch()) ? $this->userMapper->mapRowToUser(fields: $user) : false;
     }
 
     /**
@@ -44,8 +44,8 @@ class UserRepository implements IUserRepository
      */
     public function findByUserName(string $username): User | false
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM `users` WHERE `username` = ?');
-        $stmt->execute([$username]);
+        $stmt = $this->pdo->prepare(query: 'SELECT * FROM `users` WHERE `username` = ?');
+        $stmt->execute(params: [$username]);
         return $stmt->fetch();
     }
 
@@ -54,7 +54,7 @@ class UserRepository implements IUserRepository
      */
     public function findAll(): array | false
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM `users`');
+        $stmt = $this->pdo->prepare(query: 'SELECT * FROM `users`');
         $stmt->execute();
         return $stmt->fetchAll();
     }

@@ -18,7 +18,7 @@ class Router
      */
     public function get(string $path, string $controller, string $action): void
     {
-        $this->addHandler(self::METHOD_GET, $path, $controller, $action);
+        $this->addHandler(method: self::METHOD_GET, path: $path, controller: $controller, action: $action);
     }
 
     /**
@@ -28,7 +28,7 @@ class Router
      */
     public function post(string $path, string $controller, string $action): void
     {
-        $this->addHandler(self::METHOD_POST, $path, $controller, $action);
+        $this->addHandler(method: self::METHOD_POST, path: $path, controller: $controller, action: $action);
     }
 
     /**
@@ -43,8 +43,10 @@ class Router
         $controller = DIR_CONTROLLERS . 'MainController';
         $action = 'notFoundPageAction';
 
-        foreach ($this->handlers as $handler) {
-            if ($handler['path'] == $requestPath && $handler['method'] == $requestMethod) {
+        foreach ($this->handlers as $handler)
+        {
+            if ($handler['path'] == $requestPath && $handler['method'] == $requestMethod)
+            {
                 $controller = DIR_CONTROLLERS .$handler['controller'];
                 $action = $handler['action'];
                 break;

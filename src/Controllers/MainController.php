@@ -10,10 +10,8 @@ class MainController
 {
     public function indexAction(Request $request) : void
     {
-        $userRepo = new UserRepository(new UserMapper());
-        $user = $userRepo->findById($request->get('id'));
-
-
+        $userRepo = new UserRepository(userMapper: new UserMapper());
+        $user = $userRepo->findById(id: $request->get('id'));
     }
 
     /**
