@@ -10,11 +10,10 @@ class MainController
 {
     public function indexAction(Request $request) : void
     {
-        $userRepository = new UserRepository();
-        $userMapper = new UserMapper($userRepository);
+        $userRepository = new UserRepository(new UserMapper());
 
         if ($id = $request->get('id')) {
-            if ($user = $userMapper->findById($id)) {
+            if ($user = $userRepository->findById($id)) {
                 echo $user->getUsername();
             } else {
                 echo 'Такого пользователя нет';
