@@ -6,20 +6,36 @@ namespace App\Router;
 
 class Router
 {
+    /**
+     * @var array
+     */
     private array $handlers = [];
     private const METHOD_GET = 'GET';
     private const METHOD_POST = 'POST';
 
-    public function get($path, $controller, $action): void
+    /**
+     * @param string $path
+     * @param string $controller
+     * @param string $action
+     */
+    public function get(string $path, string $controller, string $action): void
     {
         $this->addHandler(self::METHOD_GET, $path, $controller, $action);
     }
 
-    public function post($path, $controller, $action): void
+    /**
+     * @param string $path
+     * @param string $controller
+     * @param string $action
+     */
+    public function post(string $path, string $controller, string $action): void
     {
         $this->addHandler(self::METHOD_POST, $path, $controller, $action);
     }
 
+    /**
+     * Run APP
+     */
     public function run(): void
     {
         $requestUri = parse_url($_SERVER['REQUEST_URI']);
@@ -39,6 +55,12 @@ class Router
         call_user_func([new $controller,$action], new Request());
     }
 
+    /**
+     * @param string $method
+     * @param string $path
+     * @param string $controller
+     * @param string $action
+     */
     private function addHandler(string $method, string $path, string $controller, string $action): void
     {
         $this->handlers[] = [

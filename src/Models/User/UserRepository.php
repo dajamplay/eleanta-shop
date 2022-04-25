@@ -7,7 +7,14 @@ use PDO;
 
 class UserRepository implements IUserRepository
 {
+    /**
+     * @var PDO
+     */
     private PDO $pdo;
+
+    /**
+     * @var UserMapper
+     */
     private UserMapper $userMapper;
 
     /**
@@ -28,9 +35,7 @@ class UserRepository implements IUserRepository
     {
         $stmt = $this->pdo->prepare('SELECT * FROM `users` WHERE `id` = ?');
         $stmt->execute([$id]);
-        if ($user = $stmt->fetch()) {
-            return $this->userMapper->mapRowToUser($user);
-        }
+        if ($user = $stmt->fetch()) return $this->userMapper->mapRowToUser($user);
         return false;
     }
 
