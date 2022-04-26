@@ -2,28 +2,18 @@
 
 namespace App\Models\User;
 
-use JetBrains\PhpStorm\Pure;
-
 class UserMapper
 {
-    /**
-     * @param array $fields
-     * @return User
-     */
-    #[Pure] public function mapRowToUser(array $fields): User
+    public function mapRowToUser(array $fields): User
     {
-        return User::create(fields: $fields);
+        return User::create($fields);
     }
 
-    /**
-     * @param array $users
-     * @return array
-     */
-    #[Pure] public function mapRowsToUsers(array $users): array
+    public function mapRowsToUsers(array $users): array
     {
         $arrUsers = [];
         foreach ($users as $user) {
-            $arrUsers[$user['id']] = User::create(fields: $user);
+            $arrUsers[$user['id']] = User::create($user);
         }
         return $arrUsers;
     }

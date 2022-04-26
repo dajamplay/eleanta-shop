@@ -4,31 +4,28 @@ namespace App\Router;
 
 class Router
 {
-    /**
-     * @var array
-     */
     private array $handlers = [];
     private const METHOD_GET = 'GET';
     private const METHOD_POST = 'POST';
 
-    /**
-     * @param string $path
-     * @param string $controller
-     * @param string $action
-     */
     public function get(string $path, string $controller, string $action): void
     {
-        $this->addHandler(method: self::METHOD_GET, path: $path, controller: $controller, action: $action);
+        $this->addHandler(
+            method: self::METHOD_GET,
+            path: $path,
+            controller: $controller,
+            action: $action
+        );
     }
 
-    /**
-     * @param string $path
-     * @param string $controller
-     * @param string $action
-     */
     public function post(string $path, string $controller, string $action): void
     {
-        $this->addHandler(method: self::METHOD_POST, path: $path, controller: $controller, action: $action);
+        $this->addHandler(
+            method: self::METHOD_POST,
+            path: $path,
+            controller: $controller,
+            action: $action
+        );
     }
 
     /**
@@ -36,6 +33,7 @@ class Router
      */
     public function run(): void
     {
+        $request = new Request();
         $requestUri = parse_url($_SERVER['REQUEST_URI']);
         $requestPath = $requestUri['path'];
         $requestMethod = $_SERVER['REQUEST_METHOD'];
@@ -52,15 +50,10 @@ class Router
                 break;
             }
         }
-        call_user_func([new $controller,$action], new Request());
+
+        call_user_func([new $controller,$action], $request);
     }
 
-    /**
-     * @param string $method
-     * @param string $path
-     * @param string $controller
-     * @param string $action
-     */
     private function addHandler(string $method, string $path, string $controller, string $action): void
     {
         $this->handlers[] = [

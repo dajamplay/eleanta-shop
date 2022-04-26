@@ -7,21 +7,12 @@
  * Веб-адрес: https://www.eleanta.ru
  */
 
-/**
- * Config
- */
 require_once __DIR__ . '/../config.php';
-
-/**
- * Composer autoload
- */
 require_once DIR_AUTOLOAD . 'autoload.php';
 
-/**
- * Routing
- */
+/** Routing */
 $router = new App\Router\Router();
 
-$router->get('/', 'MainController', 'indexAction');
+$router->get('/', 'Main\\MainController', 'indexAction');
 
 $router->run();
