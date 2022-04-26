@@ -8,11 +8,20 @@ use App\Router\Request;
 
 class MainController
 {
-    public function indexAction() : void
+    public function indexAction(Request $request) : void
     {
         $userRepo = new UserRepository(new UserMapper());
-        $user = $userRepo->findById(1);
-        dd($user);
+
+        if ($id = $request->get('id')) {
+            if ($user = $userRepo->findById($id)) {
+                dd($user);
+            } else {
+                echo 'Такого пользователя нет.';
+            }
+        } else {
+            $users = $userRepo->findAll();
+            dd($users);
+        }
     }
 
     public function notFoundPageAction() {
