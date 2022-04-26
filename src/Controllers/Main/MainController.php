@@ -12,7 +12,7 @@ class MainController
     {
         $userRepo = new UserRepository(new UserMapper());
         $user = $userRepo->findById(1);
-        echo $user->getUsername();
+        dd($user);
     }
 
     public function notFoundPageAction() {
