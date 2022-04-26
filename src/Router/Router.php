@@ -2,6 +2,8 @@
 
 namespace App\Router;
 
+use App\Services\Request\Request;
+
 class Router
 {
     private array $handlers = [];

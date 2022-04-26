@@ -4,7 +4,7 @@ namespace App\Controllers\Main;
 
 use App\Models\User\UserMapper;
 use App\Models\User\UserRepository;
-use App\Router\Request;
+use App\Services\Request\Request;
 
 class MainController
 {
