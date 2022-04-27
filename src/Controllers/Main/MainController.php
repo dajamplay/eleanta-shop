@@ -14,13 +14,13 @@ class MainController
 
         if ($id = $request->get('id')) {
             if ($user = $userRepo->findById($id)) {
-                dd($user);
+                var_dump($user);
             } else {
                 echo 'Такого пользователя нет.';
             }
         } else {
             $users = $userRepo->findAll();
-            dd($users);
+            var_dump($users);
         }
     }
 

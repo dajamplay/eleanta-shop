@@ -8,7 +8,6 @@ class User
     {
         return new self(
             id: $fields['id'],
-            username: $fields['username'],
             password: $fields['password'],
             email: $fields['email']
         );
@@ -16,15 +15,9 @@ class User
 
     public function __construct(
         private int $id,
-        private string $username,
         private string $password,
         private string $email)
     {
-    }
-
-    public function getUsername(): string
-    {
-        return $this->username;
     }
 
     public function getEmail(): string

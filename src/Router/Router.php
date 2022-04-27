@@ -41,7 +41,7 @@ class Router
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
         $controller = DIR_CONTROLLERS . 'MainController';
-        $action = 'notFoundPageAction';
+        $action = 'pageNotFoundAction';
 
         foreach ($this->handlers as $handler)
         {

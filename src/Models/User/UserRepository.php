@@ -16,7 +16,12 @@ class UserRepository implements IUserRepository
         $this->userMapper = $userMapper;
     }
 
-
+    public function findByEmail(string $email): User|false
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM `users` WHERE `email` = ?');
+        $stmt->execute([$email]);
+        return ($user = $stmt->fetch()) ? $this->userMapper->mapRowToUser($user) : false;
+    }
     public function findById(string $id): User | false
     {
         $stmt = $this->pdo->prepare('SELECT * FROM `users` WHERE `id` = ?');
