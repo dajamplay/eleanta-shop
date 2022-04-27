@@ -2,11 +2,17 @@
 
 namespace App\Controllers\Admin;
 
+use App\Models\User\UserMapper;
+use App\Models\User\UserRepository;
+use App\Services\Render\Render;
+
 class MainController extends AbstractController
 {
     public function indexAction(): void
     {
-        echo 'Index page';
+        $userRepo = new UserRepository(new UserMapper());
+        $user = $userRepo->findByEmail('a@a.a');
+        Render::run('main/index', ['user' => $user]);
     }
 
     public function logonAction(): void
