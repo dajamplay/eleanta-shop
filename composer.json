@@ -13,6 +13,7 @@
         }
     ],
     "require": {
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "maximebf/debugbar": "^1.18"
     }
 }
